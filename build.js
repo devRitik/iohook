@@ -81,7 +81,7 @@ function initBuild() {
         return build(runtime, version, abi);
       })
       .then(function () {
-        return tarGz(runtime, abi);
+        // return tarGz(runtime, abi);
       })
       .catch((err) => {
         console.error(err);
