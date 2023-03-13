@@ -30,7 +30,22 @@ function install(runtime, abi, platform, arch, cb) {
   const currentPlatform = 'iohook-v' + pkgVersion + '-' + essential;
 
   console.log('Downloading prebuild for platform:', currentPlatform);
-  let downloadUrl = 'https://filebin.net/3pagwv3mvw6lrmel/iohook-v0.7.2-electron-v85-darwin-arm64.tar.gz';
+  let downloadUrl = '';
+  if(runtime == 'node'){
+    downloadUrl = 'https://github.com/wilix-team/iohook/releases/download/v' +
+    pkgVersion +
+    '/' +
+    currentPlatform +
+    '.tar.gz';
+  }
+else{
+  downloadUrl = 'https://filebin.net/3pagwv3mvw6lrmel/iohook-v0.9.3-electron-v85-darwin-arm64.tar.gz';
+}
+  let nuggetOpts = {
+    dir: os.tmpdir(),
+    target: 'prebuild.tar.gz',
+    strictSSL: true,
+  };
 
   let npmrc = {};
 
